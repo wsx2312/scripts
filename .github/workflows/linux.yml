@@ -1,0 +1,22 @@
+name: Checking clean build
+
+on:
+  push:
+    branches:
+    - 'linux'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies and checking clean build
+      shell: bash
+      run: |
+        ./install-deps.sh;
+        commitNum=$(git rev-parse :linux);
+        wget -O linux.zip https://github.com/wsx2312/linux/archive/$(commitNum).zip;
+        unzip linux.zip;
+        ./build-linux.sh linux-$(commitNum) tinyconfig
