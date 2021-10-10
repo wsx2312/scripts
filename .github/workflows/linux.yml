@@ -15,8 +15,8 @@ jobs:
     - name: Install Dependencies and checking clean build
       shell: bash
       run: |
-        ./install-deps.sh;
-        commitNum=$(git rev-parse :linux);
-        wget -O linux.zip https://github.com/wsx2312/linux/archive/$(commitNum).zip;
-        unzip linux.zip;
+        ./install-deps.sh
+        commitNum=$(git rev-parse :linux)
+        wget -O linux.zip https://github.com/wsx2312/linux/archive/$(commitNum).zip
+        unzip linux.zip
         ./build-linux.sh linux-$(commitNum) tinyconfig
