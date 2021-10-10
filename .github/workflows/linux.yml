@@ -2,7 +2,7 @@ name: Checking clean build
 
 on:
   push:
-    branches:
+    paths:
     - 'linux'
 
 jobs:
